@@ -82,7 +82,7 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {projects.map((project) => (
             <article
               key={project.name}
@@ -105,23 +105,23 @@ const Projects = () => {
               </div>
 
               <div
-                className={`flex flex-col flex-1 px-8 pb-8 pt-6 ${
+                className={`flex flex-col flex-1 px-6 sm:px-8 pb-6 sm:pb-8 pt-5 sm:pt-6 ${
                   darkMode ? 'bg-[#050505]' : 'bg-gray-50'
                 }`}
               >
-                <div className="flex items-start justify-between mb-3">
-                  <div>
+                <div className="flex items-start justify-between mb-3 gap-2">
+                  <div className="min-w-0 flex-1">
                     <p className={`text-xs uppercase tracking-[0.2em] mb-1 ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>
                     Project
                     </p>
-                    <h3 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{project.name}</h3>
+                    <h3 className={`text-xl sm:text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{project.name}</h3>
                   </div>
-                  <span className={`text-sm font-medium ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                  <span className={`text-xs sm:text-sm font-medium ${darkMode ? 'text-gray-400' : 'text-gray-600'} shrink-0`}>
                     {project.date}
                   </span>
                 </div>
 
-                <p className={`text-sm mb-5 leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                <p className={`text-sm sm:text-sm mb-4 sm:mb-5 leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                   {project.description}
                 </p>
 

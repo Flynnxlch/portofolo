@@ -62,24 +62,24 @@ const About = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Text content */}
-          <div className="text-center lg:text-left space-y-8">
-            <div className="space-y-4">
-              <h1 className={`text-5xl md:text-6xl lg:text-7xl font-bold leading-tight ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+          <div className="text-center lg:text-left space-y-6 sm:space-y-8 px-4 sm:px-0">
+            <div className="space-y-3 sm:space-y-4">
+              <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 Hi, I'm Misyal
               </h1>
               
-              <p className={`text-lg md:text-xl leading-relaxed ${darkMode ? 'text-gray-400' : 'text-gray-600'} max-w-2xl`}>
+              <p className={`text-base sm:text-lg md:text-xl leading-relaxed ${darkMode ? 'text-gray-400' : 'text-gray-600'} max-w-2xl mx-auto lg:mx-0`}>
                 An enthusiastic student at <span className="font-semibold">UIN Syarif Hidayatullah Jakarta</span>, driven by a passion for Web and Android Development. I specialize in crafting front-end experiences that users love, working with diverse technologies such as <span className={`font-medium ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>React, Javascript,  PHP, Java, Kotlin, Python, And More</span>, alongside modern frameworks like <span className={`font-medium ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>Express.js and Next.js</span> to bring ideas to life.
               </p>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start w-full sm:w-auto">
               <a 
                 href="https://github.com/Flynnxlch"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group px-8 py-4 rounded-full font-medium transition-all duration-300 ${
+                className={`group px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-sm sm:text-base transition-all duration-300 text-center ${
                   darkMode 
                     ? 'bg-blue-500 text-white hover:bg-blue-600' 
                     : 'bg-blue-600 text-white hover:bg-blue-700'
@@ -93,7 +93,7 @@ const About = () => {
               
               <button 
                 onClick={() => setIsModalOpen(true)}
-                className={`px-8 py-4 rounded-full font-medium border-2 transition-all duration-300 ${
+                className={`px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-sm sm:text-base border-2 transition-all duration-300 ${
                   darkMode
                     ? 'border-gray-700 text-gray-300 hover:border-gray-600 hover:bg-gray-900'
                     : 'border-[#DFDFDF] text-gray-700 hover:border-gray-400 hover:bg-[#F5F5F5]'

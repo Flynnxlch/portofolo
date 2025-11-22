@@ -86,12 +86,14 @@ const Navbar = () => {
             </Link>
 
           {/* Center Navigation Links - Desktop */}
-          <div className="absolute left-1/2 transform -translate-x-1/2">
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2">
             <HeadNav />
           </div>
 
-          {/* Right Side - Resume and Theme Toggle */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Right Side - Resume, Theme Toggle, and Hamburger Menu */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Desktop: Resume and Theme Toggle */}
+            <div className="hidden md:flex items-center gap-3">
               {/* Resume Button */}
               <a
                 href="/cv.pdf"
@@ -121,47 +123,48 @@ const Navbar = () => {
               </button>
             </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-3">
-            {/* Resume Button - Mobile */}
-            <a
-              href="/cv.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`w-10 h-10 flex items-center justify-center border rounded-full transition-all duration-300 ${darkMode ? 'bg-black border-gray-800 hover:bg-gray-900' : 'bg-white border-[#DFDFDF] hover:bg-[#F5F5F5]'}`}
-              aria-label="Download Resume"
-            >
-              <HiDocumentText className={`w-5 h-5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} />
-            </a>
-            
-            {/* Dark Mode Toggle - Mobile */}
-            <button
-              onClick={toggleDarkMode}
-              className={`w-10 h-10 flex items-center justify-center border rounded-full transition-all duration-300 relative ${darkMode ? 'bg-black border-gray-800 hover:bg-gray-900' : 'bg-white border-[#DFDFDF] hover:bg-[#F5F5F5]'}`}
-              aria-label="Toggle dark mode"
-            >
-              <div className="relative w-5 h-5">
-                <HiSun
-                  className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${darkMode ? 'text-gray-300 opacity-100 rotate-0 scale-100' : 'text-gray-700 opacity-0 rotate-90 scale-0'}`}
-                />
-                <HiMoon
-                  className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${darkMode ? 'text-gray-300 opacity-0 -rotate-90 scale-0' : 'text-gray-700 opacity-100 rotate-0 scale-100'}`}
-                />
-              </div>
-            </button>
+            {/* Mobile: Resume, Theme Toggle, and Hamburger Menu - All aligned to the right */}
+            <div className="md:hidden flex items-center gap-2">
+              {/* Resume Button - Mobile */}
+              <a
+                href="/cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-10 h-10 flex items-center justify-center border rounded-full transition-all duration-300 ${darkMode ? 'bg-black border-gray-800 hover:bg-gray-900' : 'bg-white border-[#DFDFDF] hover:bg-[#F5F5F5]'}`}
+                aria-label="Download Resume"
+              >
+                <HiDocumentText className={`w-5 h-5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} />
+              </a>
+              
+              {/* Dark Mode Toggle - Mobile */}
+              <button
+                onClick={toggleDarkMode}
+                className={`w-10 h-10 flex items-center justify-center border rounded-full transition-all duration-300 relative ${darkMode ? 'bg-black border-gray-800 hover:bg-gray-900' : 'bg-white border-[#DFDFDF] hover:bg-[#F5F5F5]'}`}
+                aria-label="Toggle dark mode"
+              >
+                <div className="relative w-5 h-5">
+                  <HiSun
+                    className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${darkMode ? 'text-gray-300 opacity-100 rotate-0 scale-100' : 'text-gray-700 opacity-0 rotate-90 scale-0'}`}
+                  />
+                  <HiMoon
+                    className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${darkMode ? 'text-gray-300 opacity-0 -rotate-90 scale-0' : 'text-gray-700 opacity-100 rotate-0 scale-100'}`}
+                  />
+                </div>
+              </button>
 
-            {/* Hamburger Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`w-10 h-10 flex items-center justify-center border rounded-full transition-colors ${darkMode ? 'bg-black border-gray-800 hover:bg-gray-900' : 'bg-white border-[#DFDFDF] hover:bg-[#F5F5F5]'}`}
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? (
-                <HiXMark className={`w-5 h-5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} />
-              ) : (
-                <HiBars3 className={`w-5 h-5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} />
-              )}
-            </button>
+              {/* Hamburger Menu Button */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className={`w-10 h-10 flex items-center justify-center border rounded-full transition-colors ${darkMode ? 'bg-black border-gray-800 hover:bg-gray-900' : 'bg-white border-[#DFDFDF] hover:bg-[#F5F5F5]'}`}
+                aria-label="Toggle menu"
+              >
+                {mobileMenuOpen ? (
+                  <HiXMark className={`w-5 h-5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} />
+                ) : (
+                  <HiBars3 className={`w-5 h-5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} />
+                )}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -172,26 +175,36 @@ const Navbar = () => {
           }`}
         >
           <div className={`py-4 space-y-3 border-t ${darkMode ? 'border-gray-800' : 'border-[#DFDFDF]'}`}>
-            {navLinks.map((link) => (
-              <Link
+            {[
+              { name: 'Home', id: 'home' },
+              { name: 'About me', id: 'about' },
+              { name: 'Services', id: 'services' },
+              { name: 'My work', id: 'work' },
+            ].map((link) => (
+              <button
                 key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`block px-4 py-2 text-sm font-medium rounded-lg transition-colors ${darkMode ? 'text-gray-300 hover:text-gray-100 hover:bg-gray-900' : 'text-gray-700 hover:text-gray-900 hover:bg-[#F5F5F5]'}`}
+                onClick={() => {
+                  const element = document.getElementById(link.id)
+                  if (element) {
+                    const offset = 80
+                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+                    const offsetPosition = elementPosition - offset
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' })
+                  }
+                  setMobileMenuOpen(false)
+                }}
+                className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${darkMode ? 'text-gray-300 hover:text-gray-100 hover:bg-gray-900' : 'text-gray-700 hover:text-gray-900 hover:bg-[#F5F5F5]'}`}
               >
                 {link.name}
-              </Link>
+              </button>
             ))}
-            <div className="pt-2">
-              <ConnectButton className="w-full justify-center" />
-            </div>
           </div>
         </div>
       </div>
     </nav>
 
-      {/* Floating HeadNav, Resume and Theme Toggle */}
-      <div className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ${scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
+      {/* Floating Navbar - Desktop (Centered) */}
+      <div className={`hidden md:flex fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ${scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
         <div className="flex items-center gap-1">
           <HeadNav floating={true} />
           <div className={`flex items-center gap-1 transition-all duration-500 ${scrolled ? 'ml-1' : 'ml-0'}`}>
@@ -222,6 +235,51 @@ const Navbar = () => {
               </div>
             </button>
           </div>
+        </div>
+      </div>
+
+      {/* Floating Navbar - Mobile (Top Right) */}
+      <div className={`md:hidden fixed top-4 right-4 z-50 transition-all duration-500 ${scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
+        <div className="flex items-center gap-2">
+          {/* Resume Button - Floating Mobile */}
+          <a
+            href="/cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`w-10 h-10 flex items-center justify-center border rounded-full transition-all duration-300 shadow-lg ${darkMode ? 'bg-gray-900/95 border-gray-800 hover:bg-gray-800 backdrop-blur-lg' : 'bg-white/95 border-gray-200 hover:bg-gray-50 backdrop-blur-lg'}`}
+            aria-label="Download Resume"
+          >
+            <HiDocumentText className={`w-5 h-5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} />
+          </a>
+          
+          {/* Theme Toggle - Floating Mobile */}
+          <button
+            onClick={toggleDarkMode}
+            className={`w-10 h-10 flex items-center justify-center border rounded-full transition-all duration-300 relative shadow-lg ${darkMode ? 'bg-gray-900/95 border-gray-800 hover:bg-gray-800 backdrop-blur-lg' : 'bg-white/95 border-gray-200 hover:bg-gray-50 backdrop-blur-lg'}`}
+            aria-label="Toggle dark mode"
+          >
+            <div className="relative w-5 h-5">
+              <HiSun
+                className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${darkMode ? 'text-gray-300 opacity-100 rotate-0 scale-100' : 'text-gray-700 opacity-0 rotate-90 scale-0'}`}
+              />
+              <HiMoon
+                className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${darkMode ? 'text-gray-300 opacity-0 -rotate-90 scale-0' : 'text-gray-700 opacity-100 rotate-0 scale-100'}`}
+              />
+            </div>
+          </button>
+
+          {/* Hamburger Menu Button - Floating Mobile */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className={`w-10 h-10 flex items-center justify-center border rounded-full transition-colors shadow-lg ${darkMode ? 'bg-gray-900/95 border-gray-800 hover:bg-gray-800 backdrop-blur-lg' : 'bg-white/95 border-gray-200 hover:bg-gray-50 backdrop-blur-lg'}`}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? (
+              <HiXMark className={`w-5 h-5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} />
+            ) : (
+              <HiBars3 className={`w-5 h-5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} />
+            )}
+          </button>
         </div>
       </div>
     </>

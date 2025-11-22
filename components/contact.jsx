@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { FaLinkedin } from 'react-icons/fa'
-import { HiEnvelope, HiMapPin, HiPaperAirplane } from 'react-icons/hi2'
+import { HiEnvelope, HiPaperAirplane } from 'react-icons/hi2'
 import BackgroundAnimation from './backgroundanimation'
 
 const Contact = () => {
@@ -87,17 +87,17 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {/* Contact Information */}
-          <div className={`p-8 rounded-3xl border ${
+          <div className={`p-6 sm:p-8 rounded-2xl sm:rounded-3xl border ${
             darkMode 
               ? 'bg-gray-900/50 border-gray-800' 
               : 'bg-[#F5F5F5] border-[#DFDFDF]'
           }`}>
-            <h3 className={`text-2xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+            <h3 className={`text-xl sm:text-2xl font-bold mb-3 sm:mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
               Contact Information
             </h3>
-            <p className={`mb-8 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+            <p className={`text-sm sm:text-base mb-6 sm:mb-8 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
               Feel free to reach out through any of these channels.
             </p>
             
@@ -134,15 +134,15 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className={`p-8 rounded-3xl border ${
+          <div className={`p-6 sm:p-8 rounded-2xl sm:rounded-3xl border ${
             darkMode 
               ? 'bg-gray-900/50 border-gray-800' 
               : 'bg-[#F5F5F5] border-[#DFDFDF]'
           }`}>
-            <h3 className={`text-2xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+            <h3 className={`text-xl sm:text-2xl font-bold mb-3 sm:mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
               Send a Message
             </h3>
-            <p className={`mb-6 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+            <p className={`text-sm sm:text-base mb-5 sm:mb-6 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
               Fill out the form below and I'll get back to you as soon as possible.
             </p>
 
@@ -210,13 +210,13 @@ const Contact = () => {
               {/* Submit Button */}
               <button
                 type="submit"
-                className={`w-full flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+                className={`w-full flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 ${
                   darkMode
                     ? 'bg-blue-500 text-white hover:bg-blue-600'
                     : 'bg-blue-600 text-white hover:bg-blue-700'
                 }`}
               >
-                <HiPaperAirplane className="w-5 h-5" />
+                <HiPaperAirplane className="w-4 sm:w-5 h-4 sm:h-5" />
                 Send Message
               </button>
             </form>

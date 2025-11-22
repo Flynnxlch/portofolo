@@ -160,52 +160,52 @@ const Hero = () => {
           </div>
 
           {/* Typing Animation */}
-          <div className="h-12 md:h-16 flex items-center justify-center">
-            <p className={`text-2xl md:text-3xl lg:text-4xl font-medium leading-tight ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+          <div className="h-12 md:h-16 flex items-center justify-center px-4">
+            <p className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium leading-tight ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
               {currentText}
-              <span className={`inline-block w-0.5 h-10 md:h-12 ml-1 ${darkMode ? 'bg-gray-400' : 'bg-gray-600'} animate-pulse`} aria-hidden="true"></span>
+              <span className={`inline-block w-0.5 h-8 sm:h-10 md:h-12 ml-1 ${darkMode ? 'bg-gray-400' : 'bg-gray-600'} animate-pulse`} aria-hidden="true"></span>
             </p>
           </div>
 
           {/* Skills Badges */}
-          <div className="flex flex-wrap gap-4 justify-center">
-            <div className={`px-5 py-3 rounded-full border flex items-center gap-2 ${
+          <div className="flex flex-wrap gap-3 sm:gap-4 justify-center px-4">
+            <div className={`px-4 sm:px-5 py-2 sm:py-3 rounded-full border flex items-center gap-2 ${
               darkMode 
                 ? 'bg-gray-900/50 border-gray-800 text-gray-300' 
                 : 'bg-[#F5F5F5] border-[#DFDFDF] text-gray-700'
             }`}>
-              <HiCodeBracket className="w-5 h-5" />
-              <span className="text-sm font-medium">Front End Developer</span>
+              <HiCodeBracket className="w-4 sm:w-5 h-4 sm:h-5" />
+              <span className="text-xs sm:text-sm font-medium">Front End Developer</span>
             </div>
-            <div className={`px-5 py-3 rounded-full border flex items-center gap-2 ${
+            <div className={`px-4 sm:px-5 py-2 sm:py-3 rounded-full border flex items-center gap-2 ${
               darkMode 
                 ? 'bg-gray-900/50 border-gray-800 text-gray-300' 
                 : 'bg-[#F5F5F5] border-[#DFDFDF] text-gray-700'
             }`}>
-              <HiDevicePhoneMobile className="w-5 h-5" />
-              <span className="text-sm font-medium">Mobile Development</span>
+              <HiDevicePhoneMobile className="w-4 sm:w-5 h-4 sm:h-5" />
+              <span className="text-xs sm:text-sm font-medium">Mobile Development</span>
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto px-4 sm:px-0">
             <a 
               href="https://github.com/Flynnxlch"
               target="_blank"
               rel="noopener noreferrer"
-              className={`group px-8 py-4 rounded-full font-medium transition-all duration-300 flex items-center gap-2 ${
+              className={`group px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-sm sm:text-base transition-all duration-300 flex items-center justify-center gap-2 ${
                 darkMode 
                   ? 'bg-blue-500 text-white hover:bg-blue-600' 
                   : 'bg-blue-600 text-white hover:bg-blue-700'
               }`}
             >
               Explore Projects
-              <HiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <HiArrowRight className="w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             
             <button 
               onClick={() => setIsModalOpen(true)}
-              className={`px-8 py-4 rounded-full font-medium border-2 transition-all duration-300 ${
+              className={`px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-sm sm:text-base border-2 transition-all duration-300 ${
                 darkMode
                   ? 'border-gray-700 text-gray-300 hover:border-gray-600 hover:bg-gray-900'
                   : 'border-[#DFDFDF] text-gray-700 hover:border-gray-400 hover:bg-[#F5F5F5]'

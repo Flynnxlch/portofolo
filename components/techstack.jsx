@@ -109,13 +109,13 @@ const TechStack = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {techCategories.map((category) => {
             const CategoryIcon = category.icon
             return (
               <div 
                 key={category.title} 
-                className={`p-6 rounded-2xl border transition-all duration-300 ${
+                className={`p-5 sm:p-6 rounded-xl sm:rounded-2xl border transition-all duration-300 ${
                   darkMode 
                     ? 'bg-gray-900/50 border-gray-800 hover:border-gray-700' 
                     : 'bg-[#F5F5F5] border-[#DFDFDF] hover:border-gray-300'
