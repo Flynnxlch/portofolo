@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { HiArrowUpRight, HiBars3, HiMoon, HiSun, HiXMark } from 'react-icons/hi2'
+import { HiArrowUpRight, HiBars3, HiDocumentText, HiMoon, HiSun, HiXMark } from 'react-icons/hi2'
 import HeadNav from './headnav'
 
 const Navbar = () => {
@@ -90,8 +90,20 @@ const Navbar = () => {
             <HeadNav />
           </div>
 
-          {/* Right Side - Empty div for spacing */}
+          {/* Right Side - Resume and Theme Toggle */}
           <div className="hidden md:flex items-center gap-3">
+              {/* Resume Button */}
+              <a
+                href="/cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center gap-2 px-4 py-2 border rounded-full transition-all duration-300 ${darkMode ? 'bg-black border-gray-800 hover:bg-gray-900' : 'bg-white border-[#DFDFDF] hover:bg-[#F5F5F5]'}`}
+                aria-label="Download Resume"
+              >
+                <HiDocumentText className={`w-4 h-4 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} />
+                <span className={`text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Resume</span>
+              </a>
+              
               {/* Dark Mode Toggle */}
               <button
                 onClick={toggleDarkMode}
@@ -111,6 +123,17 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-3">
+            {/* Resume Button - Mobile */}
+            <a
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`w-10 h-10 flex items-center justify-center border rounded-full transition-all duration-300 ${darkMode ? 'bg-black border-gray-800 hover:bg-gray-900' : 'bg-white border-[#DFDFDF] hover:bg-[#F5F5F5]'}`}
+              aria-label="Download Resume"
+            >
+              <HiDocumentText className={`w-5 h-5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} />
+            </a>
+            
             {/* Dark Mode Toggle - Mobile */}
             <button
               onClick={toggleDarkMode}
@@ -167,11 +190,23 @@ const Navbar = () => {
       </div>
     </nav>
 
-      {/* Floating HeadNav and Theme Toggle */}
+      {/* Floating HeadNav, Resume and Theme Toggle */}
       <div className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ${scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
         <div className="flex items-center gap-1">
           <HeadNav floating={true} />
-          <div className={`transition-all duration-500 ${scrolled ? 'ml-1' : 'ml-0'}`}>
+          <div className={`flex items-center gap-1 transition-all duration-500 ${scrolled ? 'ml-1' : 'ml-0'}`}>
+            {/* Resume Button - Floating */}
+            <a
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`w-10 h-10 flex items-center justify-center border rounded-full transition-all duration-300 shadow-lg ${darkMode ? 'bg-gray-900/95 border-gray-800 hover:bg-gray-800 backdrop-blur-lg' : 'bg-white/95 border-gray-200 hover:bg-gray-50 backdrop-blur-lg'}`}
+              aria-label="Download Resume"
+            >
+              <HiDocumentText className={`w-5 h-5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`} />
+            </a>
+            
+            {/* Theme Toggle - Floating */}
             <button
               onClick={toggleDarkMode}
               className={`w-10 h-10 flex items-center justify-center border rounded-full transition-all duration-300 relative shadow-lg ${darkMode ? 'bg-gray-900/95 border-gray-800 hover:bg-gray-800 backdrop-blur-lg' : 'bg-white/95 border-gray-200 hover:bg-gray-50 backdrop-blur-lg'}`}

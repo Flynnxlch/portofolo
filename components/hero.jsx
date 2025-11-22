@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import { HiArrowRight, HiCodeBracket, HiDevicePhoneMobile } from 'react-icons/hi2'
+import BackgroundAnimation from './backgroundanimation'
+import SocialModal from './socialmodal'
 
 const Hero = () => {
   // ===== STATUS CONFIGURATION =====
@@ -19,6 +21,7 @@ const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false)
   const [typingSpeed, setTypingSpeed] = useState(100)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const words = ['Android Developer', 'Web Developer', 'Front End Developer', 'Backend Developer']
 
@@ -122,10 +125,13 @@ const Hero = () => {
   }, [currentText, isDeleting, currentIndex, typingSpeed, words])
 
   return (
-    <section className={`relative min-h-screen flex items-center justify-center overflow-hidden ${darkMode ? 'bg-black' : 'bg-white'}`}>
+    <>
+    <section id="home" className={`relative min-h-screen flex items-center justify-center overflow-hidden ${darkMode ? 'bg-black' : 'bg-white'}`}>
+      <BackgroundAnimation darkMode={darkMode} />
+
       {/* Animated gradient background */}
       <div 
-        className="absolute inset-0 opacity-30 blur-3xl transition-opacity duration-1000"
+        className="absolute inset-0 opacity-30 blur-3xl transition-opacity duration-1000 pointer-events-none"
         style={{
           background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1), transparent 50%)`,
         }}
@@ -183,26 +189,36 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <button className={`group px-8 py-4 rounded-full font-medium transition-all duration-300 flex items-center gap-2 ${
-              darkMode 
-                ? 'bg-blue-500 text-white hover:bg-blue-600' 
-                : 'bg-blue-600 text-white hover:bg-blue-700'
-            }`}>
+            <a 
+              href="https://github.com/Flynnxlch"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group px-8 py-4 rounded-full font-medium transition-all duration-300 flex items-center gap-2 ${
+                darkMode 
+                  ? 'bg-blue-500 text-white hover:bg-blue-600' 
+                  : 'bg-blue-600 text-white hover:bg-blue-700'
+              }`}
+            >
               Explore Projects
               <HiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </a>
             
-            <button className={`px-8 py-4 rounded-full font-medium border-2 transition-all duration-300 ${
-              darkMode
-                ? 'border-gray-700 text-gray-300 hover:border-gray-600 hover:bg-gray-900'
-                : 'border-[#DFDFDF] text-gray-700 hover:border-gray-400 hover:bg-[#F5F5F5]'
-            }`}>
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className={`px-8 py-4 rounded-full font-medium border-2 transition-all duration-300 ${
+                darkMode
+                  ? 'border-gray-700 text-gray-300 hover:border-gray-600 hover:bg-gray-900'
+                  : 'border-[#DFDFDF] text-gray-700 hover:border-gray-400 hover:bg-[#F5F5F5]'
+              }`}
+            >
               Let's Connect
             </button>
           </div>
         </div>
       </div>
     </section>
+    <SocialModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
   )
 }
 

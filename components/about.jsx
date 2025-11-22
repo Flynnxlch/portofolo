@@ -3,10 +3,16 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { HiArrowDown } from 'react-icons/hi2'
+import BackgroundAnimation from './backgroundanimation'
+import TechStack from './techstack'
+import Projects from './projects'
+import Contact from './contact'
+import SocialModal from './socialmodal'
 
 const About = () => {
   const [darkMode, setDarkMode] = useState(true) // Dark mode as primary
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     // Set dark mode as primary
@@ -41,10 +47,13 @@ const About = () => {
   }, [])
 
   return (
-    <section className={`relative min-h-screen flex items-center justify-center overflow-hidden ${darkMode ? 'bg-black' : 'bg-white'}`}>
+    <>
+    <section id="about" className={`relative min-h-screen flex items-center justify-center overflow-hidden ${darkMode ? 'bg-black' : 'bg-white'}`}>
+      <BackgroundAnimation darkMode={darkMode} />
+
       {/* Animated gradient background */}
       <div 
-        className="absolute inset-0 opacity-30 blur-3xl transition-opacity duration-1000"
+        className="absolute inset-0 opacity-30 blur-3xl transition-opacity duration-1000 pointer-events-none"
         style={{
           background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1), transparent 50%)`,
         }}
@@ -66,22 +75,30 @@ const About = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button className={`group px-8 py-4 rounded-full font-medium transition-all duration-300 ${
-                darkMode 
-                  ? 'bg-blue-500 text-white hover:bg-blue-600' 
-                  : 'bg-blue-600 text-white hover:bg-blue-700'
-              }`}>
+              <a 
+                href="https://github.com/Flynnxlch"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group px-8 py-4 rounded-full font-medium transition-all duration-300 ${
+                  darkMode 
+                    ? 'bg-blue-500 text-white hover:bg-blue-600' 
+                    : 'bg-blue-600 text-white hover:bg-blue-700'
+                }`}
+              >
                 View My Work
                 <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">
                   →
                 </span>
-              </button>
+              </a>
               
-              <button className={`px-8 py-4 rounded-full font-medium border-2 transition-all duration-300 ${
-                darkMode
-                  ? 'border-gray-700 text-gray-300 hover:border-gray-600 hover:bg-gray-900'
-                  : 'border-[#DFDFDF] text-gray-700 hover:border-gray-400 hover:bg-[#F5F5F5]'
-              }`}>
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className={`px-8 py-4 rounded-full font-medium border-2 transition-all duration-300 ${
+                  darkMode
+                    ? 'border-gray-700 text-gray-300 hover:border-gray-600 hover:bg-gray-900'
+                    : 'border-[#DFDFDF] text-gray-700 hover:border-gray-400 hover:bg-[#F5F5F5]'
+                }`}
+              >
                 Get In Touch
               </button>
             </div>
@@ -132,6 +149,11 @@ const About = () => {
         <HiArrowDown className={`w-6 h-6 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`} />
       </div>
     </section>
+    <TechStack />
+    <Projects />
+    <Contact />
+    <SocialModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
   )
 }
 
