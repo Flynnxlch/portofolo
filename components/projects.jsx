@@ -52,17 +52,17 @@ const Projects = () => {
       githubUrl: 'https://github.com/Flynnxlch/Bisaditas',
     },
     {
-      name: 'My-Artikelku',
+      name: 'Restaurant App',
       date: 'Present',
-      image: '/images/vim.webp',
+      image: '/images/restaurant.webp',
       description:
-        'Publishing platform where creators draft with Vim-inspired shortcuts, share articles, and foster discussion.',
-      techStack: ['PHP', 'JavaScript', 'MySQL'],
+        'Android-based mobile application for ordering restaurant food with real-time menu updates and order tracking.',
+      techStack: ['Java', 'Android Studio', 'Firebase'],
       features: [
-        'Enabled article authoring with autosave, markdown previews, and threaded comments.',
-        'Implemented security policies, audit trails, and activity logs for every publication event.',
+        'Built a complete food ordering system with menu browsing, cart management, and order placement.',
+        'Integrated Firebase for real-time database, authentication, and order status tracking.',
       ],
-      githubUrl: 'https://github.com/Flynnxlch/My-Artikelku',
+      githubUrl: 'https://github.com/Flynnxlch/Restaurant-App-test',
     },
   ]
 
